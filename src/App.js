@@ -1,5 +1,5 @@
-import './App.css';
-import { Login } from './Pages/Login/Login.js';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './Pages/Login/Login.js';
 
 function App() {
   return (
