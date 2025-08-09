@@ -1,13 +1,16 @@
 import * as S from "./StyledElements";
 import LoginBackground from "../../Img/LoginBackground.png";
 import { useEffect, useState } from "react";
-import Logo from "../../Img/Logo.png";
+import Logo from "../../Img/Logo.svg";
 import CampoTexto from "../../Components/CampoTexto";
 import LoginButton from "../../Components/LoginButton";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fundoAnterior = document.body.style.backgroundImage;
     const backgroundSizeAnterior = document.body.style.backgroundSize;
@@ -27,6 +30,11 @@ function Login() {
     };
   }, []);
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate("/adm");
+  };
+
   return (
     <S.LoginSection>
       <S.LoginWrapper>
@@ -34,7 +42,7 @@ function Login() {
           <S.LogoImg src={Logo} alt="Logo da Help Desk" />
           <S.Brandname>Help Desk</S.Brandname>
         </S.HeaderLogo>
-        <S.LoginForm>
+        <S.LoginForm onSubmit={handleLogin}>
           <S.LoginHeader>
             <S.LoginTitle>Acesse o portal</S.LoginTitle>
             <S.LoginText>
